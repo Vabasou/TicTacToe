@@ -1,0 +1,309 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: #16151d;
+}
+
+:root {
+    --cell-size: 100px;
+    --mark-size: calc(var(--cell-size) * 0.9);
+}
+
+.login_form {
+    height: 100px;
+    width: 350px;
+    position: relative;
+    transform: translate(-50%,-50%);
+    top: 50vh;
+    left: 50%;
+    border-radius: 10px;
+    padding: 50px 35px;
+}
+
+.firstPlayerInput,
+.secondPlayerInput{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+}
+
+input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    outline: none;
+    border: none;
+}
+
+.navBar {
+    background-color: #16151d;
+    height: 80px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    z-index: 999;
+    top: 0;
+}
+
+.navBar.show {
+    display: block;
+}
+
+.navbar_container {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+.result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: white;
+}
+
+#middle {
+    padding: 10px;
+}
+
+#firstPlayerScore,
+#secondPlayerScore {
+    padding: 10px;
+}
+
+#firstPlayer,
+#secondPlayer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bolder;
+    color: white;
+}
+
+div {
+    display: block;
+}
+
+.board {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: repeat(3, auto);
+    justify-items: center;
+    align-items: center;
+    margin: 40px auto 0px auto;
+}
+
+.board.show {
+    display: grid;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+    border-top: none;
+}
+
+.cell:nth-child(3n + 1) {
+    border-left: none;
+}
+
+.cell:nth-child(3n + 3) {
+    border-right: none;
+}
+
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9) {
+    border-bottom: none;
+}
+
+.cell.x,
+.cell.circle {
+    cursor: not-allowed;
+}
+
+.cell.x::before,
+.cell.x::after {
+    content: '';
+    position: absolute;
+    width: calc(var(--mark-size) * 0.15);
+    height: var(--mark-size);
+    background-color: black;
+}
+
+.cell.x::before {
+    transform: rotate(45deg);
+}
+
+.cell.x::after {
+    transform: rotate(-45deg);
+}
+
+.cell.circle::before,
+.cell.circle::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+
+.cell.circle::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+    background-color: black;
+}
+
+.cell.circle::after {
+    width: calc(var(--mark-size) * .7);
+    height: calc(var(--mark-size) * .7);
+    background-color: white;
+}
+
+.winning-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .75);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 5rem;
+    z-index: 2;
+}
+
+.winning-message button {
+    font-size: 3rem;
+    background-color: white;
+    border-color: black;
+    padding: 0.25em, 0.5em;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.winning-message button:hover {
+    background-color: black;
+    color: white;
+    border-color: white;
+}
+
+.winning-message.show {
+    display: flex;
+}
+
+.current_left_sign,
+.current_right_sign {
+    height: inherit;
+    width: auto;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.current_left_sign.x::before,
+.current_left_sign.x::after,
+.current_right_sign.x::before,
+.current_right_sign.x::after {
+    content: '';
+    position: absolute;
+    width: calc(50px * 0.15);
+    height: 50px;
+    background-color: white;
+}
+
+.current_left_sign.x::before,
+.current_right_sign.x::before {
+    transform: rotate(45deg);
+}
+
+.current_left_sign.x::after,
+.current_right_sign.x::after {
+    transform: rotate(-45deg);
+}
+
+.current_left_sign.circle::before,
+.current_left_sign.circle::after,
+.current_right_sign.circle::before,
+.current_right_sign.circle::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+
+.current_left_sign.circle::before,
+.current_right_sign.circle::before {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+}
+
+.current_left_sign.circle::after,
+.current_right_sign.circle::after {
+    width: calc(50px * .7);
+    height: calc(50px * .7);
+    background-color: #16151d;
+}
+
+
+@media screen and (max-width: 960px) {
+    .navBar, .navbar_container {
+        height: 35px;
+    }
+
+    .navbar_container {
+        max-width: 600px;
+    }
+    
+    .result {
+        font-size: 1.5rem;
+    }
+
+    #firstPlayer,
+    #secondPlayer {
+        font-size: 1.5rem;
+    }
+
+    .cell {
+        height: 60px;
+        width: 60px;
+    }
+}

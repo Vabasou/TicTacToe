@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <title>TicTacToe</title>
+</head>
+<body>
+    <form method="get" id="loginBox">
+        <div class="login_form">
+            <label class="firstPlayerInput">
+                <span>Player 1:</span>
+                <input type="text" placeholder="Nickname" class="text" name="firstPlayerInput" id="firstPlayerInput" maxlength="10">
+            </label>
+            <label class="secondPlayerInput">
+                <span>Player 2:</span>
+                <input type="text" placeholder="Nickname" class="text" name="secondPlayerInput" id="secondPlayerInput" maxlength="10">
+            </label>
+            <button id="playGame">Play!</button>
+        </div>
+    </form>
+    <nav class="navBar">
+        <div class="navbar_container">
+            <div class="current_left_sign" id="current_left_sign"></div>
+            <div id="firstPlayer">Player1</div>
+            <div class="result">
+                <div id="firstPlayerScore">0</div>
+                <div id="middle">:</div>
+                <div id="secondPlayerScore">0</div>
+            </div>
+            <div id="secondPlayer">Player2</div>
+            <div class="current_right_sign" id="current_right_sign"></div>
+        </div>
+    </nav>
+    <div class="board" id="board">
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+    </div>
+    <div class="winning-message" id="winningMessage">
+        <div data-winning-message-text></div>
+        <button id="nextGameButton">Next Game</button>
+        <button id="restartButton">Restart</button>
+    </div>    
+</body>
+</html>
