@@ -64,8 +64,24 @@ function restartGame() {
     firstPlayerTextElement.innerText = '';
     secondPlayerTextElement.innerText = '';
 
+    firstPlayerScore.innerText = '0';
+    secondPlayerScore.innerText = '0';
+
     document.body.style.background = '#16151d';
     loginForm.style.display = 'flex';
+
+    if (firstPlayerSign.classList.contains(X_CLASS)) {
+        secondPlayerSign.classList.remove(CIRCLE_CLASS);
+        secondPlayerSign.classList.add(CIRCLE_CLASS);
+    } else {
+        firstPlayerSign.classList.remove(CIRCLE_CLASS);
+        secondPlayerSign.classList.remove(X_CLASS);
+        firstPlayerSign.classList.add(X_CLASS);
+        secondPlayerSign.classList.add(CIRCLE_CLASS);
+    }
+    
+    firstPlayerCurrentScore = 0;
+    secondPlayerCurrentScore = 0;
 }
 
 startGame();

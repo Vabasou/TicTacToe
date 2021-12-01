@@ -14,14 +14,40 @@ body {
 }
 
 .login_form {
-    height: 100px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
     width: 350px;
     position: relative;
-    transform: translate(-50%,-50%);
-    top: 50vh;
-    left: 50%;
+    margin: 8% auto;
     border-radius: 10px;
-    padding: 50px 35px;
+    padding: 30px 35px 50px 30px;
+    border: 2px solid rgba(255,255,255,0.07);
+    background-color: #28313b;
+}
+
+h2 {
+    text-align: center;
+    font-size: 3rem;
+    color: white;
+}
+
+#playGame {
+    position: relative;
+    width: 50%;
+    align-content: center;
+    margin: 50px auto;
+    background-color: white;
+    border: none;
+    font-size: 2rem;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+#playGame:hover {
+    background-color: black;
+    color: white;
+    border-color: white;
 }
 
 .firstPlayerInput,
@@ -31,6 +57,7 @@ body {
     font-size: 16px;
     font-weight: 500;
     color: white;
+    z-index: 1;
 }
 
 input{
@@ -45,6 +72,8 @@ input{
     font-weight: 300;
     outline: none;
     border: none;
+    z-index: 1;
+    color: white;
 }
 
 .navBar {
@@ -284,7 +313,7 @@ div {
 }
 
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 800px) {
     .navBar, .navbar_container {
         height: 35px;
     }
@@ -305,5 +334,48 @@ div {
     .cell {
         height: 60px;
         width: 60px;
+    }
+
+    .current_left_sign.x::before,
+    .current_left_sign.x::after,
+    .current_right_sign.x::before,
+    .current_right_sign.x::after {
+        content: '';
+        position: absolute;
+        width: calc(25px * 0.15);
+        height: 25px;
+     }
+
+     .current_left_sign.circle::before,
+     .current_right_sign.circle::before {
+        width: 25px;
+        height: 25px;
+        background-color: white;
+     }
+
+     .current_left_sign.circle::after,
+     .current_right_sign.circle::after {
+         width: calc(25px * .7);
+         height: calc(25px * .7);
+         background-color: #16151d;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .current_left_sign,
+    .current_right_sign {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    #firstPlayer,
+    #secondPlayer {
+        display: none;
+    }
+    
+    .result {
+        position: relative;
+        margin: 0 auto;
     }
 }
